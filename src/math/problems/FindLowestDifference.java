@@ -25,7 +25,8 @@ public class FindLowestDifference {
     static int difference(int [] array1, int [] array2, int a1, int a2)
     {
 
-        int i = 0, j = 0;
+        int i = 0;
+        int j = 0;
 
         int result = Integer.MAX_VALUE;
 
