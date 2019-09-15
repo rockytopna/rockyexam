@@ -1,6 +1,8 @@
 package datastructure;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class UseArrayList {
 
@@ -12,39 +14,48 @@ public class UseArrayList {
          *
          */
 
-        ArrayList<String> alist=new ArrayList<String>();
+        ArrayList<String> alist = new ArrayList<String>();
+        LinkedList linkedList = new LinkedList();
 
         alist.add("John");
         alist.add("Bonny");
         alist.add("Steve");
         alist.add("Brett");
-
-        System.out.println("Original ArrayList: "+ alist);
-
-
-        System.out.println("************************************");
-
-        // Add Rocky 5rd position
-        alist.add(3, "Rocky");
-
-        System.out.println("After adding: " + alist);
-
-        System.out.println("************************************");
-
-        //Remove Brett
-        alist.remove("Steve");
-        alist.remove("Bonny");
-        System.out.println("After removing: "+ alist);
+        alist.add("Rocky");
 
 
+        for (int i = 0; i < alist.size(); i++) {
+
+            System.out.println(alist.get(i));
+
+        }
+        System.out.println("*****Remove Name****");
+
+        alist.remove(2);
+        for (int j = 0; j < alist.size(); j++) {
+            System.out.println(alist.get(j));
 
 
+        }
+
+        System.out.println("********GET PEEK & GET ELEMENT*********");
+
+        linkedList.add("BMW");
+        linkedList.add("Audi");
+        linkedList.add("Honda");
+
+        Iterator iterator = linkedList.iterator();
+
+        System.out.println(linkedList.peek());
+        System.out.println(linkedList.element());
+
+        while (iterator.hasNext())
+            System.out.print(iterator.next() + " ");
+            System.out.println();
 
 
-
-
-
+        }
 
     }
 
-}
+

@@ -1,5 +1,7 @@
 package datastructure;
 
+import java.util.*;
+
 public class UseMap {
 
     public static void main(String[] args) {
@@ -9,8 +11,23 @@ public class UseMap {
          * Use For Each loop and while loop with Iterator to retrieve data.
          *
          * Use any databases[MongoDB, Oracle, MySql] to store data and retrieve data.
+         *
+         *
          */
 
+        Map<String,String> map = new HashMap<String, String>();
+        map.put("USA", " New York ");
+        map.put("UK", " London" );
+        map.put("India", " Kalkata");
+        map.put("Bangladesh", " Dhaka");
+
+        System.out.println(map.get("USA"));
+        System.out.println(map.get("UK"));
+        System.out.println(map.get("India"));
+        System.out.println(map.get("Bangladesh"));
+
+
     }
+
 
 }
