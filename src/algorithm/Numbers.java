@@ -32,6 +32,7 @@ public class Numbers {
         printValue(numbers);
         int n = num.length;
         randomize(num, n);
+
         //Insertion Sort
         algo.insertionSort(num);
         long insertionSortExecutionTime = algo.executionTime;

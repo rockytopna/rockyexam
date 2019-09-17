@@ -2,7 +2,7 @@ package design;
 
 import java.util.Scanner;
 
-public class EmployeeInfo {
+public class EmployeeInfo implements Employee  {
 
     /*This class can be implemented from Employee interface then add additional methods in EmployeeInfo class.
      * Also, Employee interface can be implemented into an abstract class.So create an Abstract class
@@ -20,7 +20,12 @@ public class EmployeeInfo {
     /*
      * declare few static and final fields and some non-static fields
      */
-    static String companyName;
+    private static String companyName;
+    private int employeeId;
+    private String employeeName;
+    private String employeeDepartment;
+    private int employeeSalary;
+
 
     /*
      * You must implement the logic for below 2 methods and
@@ -32,12 +37,16 @@ public class EmployeeInfo {
      * you must have multiple constructor.
      * Must implement below constructor.
      */
-    public EmployeeInfo(int employeeId) {
+    public EmployeeInfo() {}
 
+    public EmployeeInfo(int employeeId){
+
+        this.employeeId = employeeId;
     }
+    public EmployeeInfo(String name, int employeeId){
 
-    public EmployeeInfo(String name, int employeeId) {
-
+        this.employeeName = name;
+        this.employeeId = employeeId;
     }
 
     /*
@@ -48,8 +57,8 @@ public class EmployeeInfo {
      * So you probably need to send 2 arguments.
      *
      */
-    public static int calculateEmployeeBonus(int numberOfYearsWithCompany) {
-        int total = 0;
+    public int calculateEmployeeBonus(int performance){
+        int total=0;
         return total;
     }
 
@@ -59,9 +68,10 @@ public class EmployeeInfo {
      * Hints: pension will be 5% of the salary for 1 year, 10% for 2 years with the company and so on.
      *
      */
-    public static int calculateEmployeePension() {
-        int total = 0;
-        Scanner sc = new Scanner(System.in);
+    public double calculateEmployeePension(){
+
+        double total = 0;
+        Scanner sc  = new Scanner(System.in);
         System.out.println("Please enter start date in format (example: May,2015): ");
         String joiningDate = sc.nextLine();
         System.out.println("Please enter today's date in format (example: August,2017): ");
@@ -69,19 +79,19 @@ public class EmployeeInfo {
         String convertedJoiningDate = DateConversion.convertDate(joiningDate);
         String convertedTodaysDate = DateConversion.convertDate(todaysDate);
 
-        //implement numbers of year from above two dates
-        //Calculate pension
+        int numberOfYears = Integer.valueOf(convertedTodaysDate.split("/")[1]) -
+                Integer.valueOf(convertedJoiningDate.split("/")[1]);
+
+        for(int i = 1; i <= numberOfYears; i++)
+            total += calculateSalary() * 0.05 * i;
 
         return total;
     }
-
     private static class DateConversion {
 
-        public DateConversion(Months months) {
-        }
-
+        public DateConversion(Months months){}
         public static String convertDate(String date) {
-            String[] extractMonth = date.split(",");
+            String [] extractMonth = date.split(",");
             String givenMonth = extractMonth[0];
             int monthDate = whichMonth(givenMonth);
             String actualDate = monthDate + "/" + extractMonth[1];
@@ -135,5 +145,67 @@ public class EmployeeInfo {
             return date;
 
         }
+    }
+
+    public void setEmployeeId(int employeeId) {
+
+        this.employeeId = employeeId;
+    }
+
+    public int employeeId() {
+
+        return this.employeeId;
+    }
+
+    public void setEmployeeName(String employeeName) {
+
+        this.employeeName = employeeName;
+    }
+
+    public String employeeName() {
+
+        return this.employeeName;
+    }
+
+    @Override
+    public void assignDepartment() {
+
+    }
+
+    @Override
+    public void assignDepartment(String department) {
+
+        this.employeeDepartment = department;
+    }
+
+
+    public String getEmployeeDepartment() {
+
+        return this.employeeDepartment;
+    }
+
+    public void setEmployeeSalary(int employeeSalary) {
+
+        this.employeeSalary = employeeSalary;
+    }
+
+    public int calculateSalary() {
+
+        return this.employeeSalary;
+    }
+
+    @Override
+    public void benefitLayout() {
+
+    }
+
+    static void setCompanyName(String companyName) {
+
+        EmployeeInfo.companyName = companyName;
+    }
+
+    String getCompanyName() {
+
+        return EmployeeInfo.companyName;
     }
 }
